@@ -21,7 +21,7 @@ Para inserir uma barra através da opção 2, o usuário deverá fornecer os doi
 # Inserir uma força:
 ![image](https://user-images.githubusercontent.com/87289234/125499022-e74c9298-88df-458d-88c2-eebef55cf0b5.png)
 
-Ao inserir uma força através da opção 3, deverão ser informados o ângulo, módulo, e nó de aplicação da força. O valor do ângulo é medido em graus, com referencial igual ao do plano cartesiano. Tanto o módulo quanto o ângulo aceitam também valores decimais. O nó de aplicação é selecionado através de seu ID.
+Ao inserir uma força através da opção 3, deverão ser informados o ângulo, módulo, e nó de aplicação da força. O valor do ângulo é medido em graus, com referencial igual ao do círculo trigonométrico. Tanto o módulo quanto o ângulo aceitam também valores decimais. O nó de aplicação é selecionado através de seu ID.
 
 # Calcular:
 ![image](https://user-images.githubusercontent.com/87289234/125500222-6c2a270f-4912-4bb4-9bc8-4a5d6872bddf.png)
