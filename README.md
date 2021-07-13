@@ -26,4 +26,10 @@ Ao inserir uma força através da opção 3, deverão ser informados o ângulo, 
 # Calcular:
 ![image](https://user-images.githubusercontent.com/87289234/125500222-6c2a270f-4912-4bb4-9bc8-4a5d6872bddf.png)
 
-Ao dar o comando de c
+A operação de cálculo faz com que o programa verifique se a treliça atende às condições para ser calculada. Se a treliça é isostática e está em equilíbrio, as forças das barras são exibidas ao usuário, identificando a barra a qual pertencem através do ID da barra que acompanha a força entre os parênteses.
+
+# Dados salvos:
+![image](https://user-images.githubusercontent.com/87289234/125500853-39c31b96-4617-43ef-8c75-ccb7ec102c75.png)
+
+
+
