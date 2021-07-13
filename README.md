@@ -31,5 +31,11 @@ A operação de cálculo faz com que o programa verifique se a treliça atende �
 # Dados salvos:
 ![image](https://user-images.githubusercontent.com/87289234/125500853-39c31b96-4617-43ef-8c75-ccb7ec102c75.png)
 
+Para que os valores das forças sejam facilmente copiados pelo usuário caso ele encerre o programa acidentalmente, todos os comandos para gerar a treliça são salvos, junto com os valores das forças calculadas. Para recriar a treliça rapidamente, basta colar o código da treliça diretamente no terminal do programa. O arquivo de salvamento "Ultima Trelica.txt" se encontra sempre no mesmo diretório do executável, e seus valores são limpos sempre que a treliça é deletada e sempre que o programa é reiniciado. Se desejar salvar os valores da treliça por mais tempo, faça uma cópia desse arquivo para outra pasta do computador.
+
+# Apagar treliça:
+![image](https://user-images.githubusercontent.com/87289234/125501607-a20f6b97-3a77-477a-a2ff-f7ec1216ee36.png)
+
+Essa função limpa todos os valores inseridos anteriormente. É avisado também ao usuário que o arquivo de salvamento será limpo ao confirmar a operação, permitindo que ele realize uma cópia do arquivo caso queira.
 
 
