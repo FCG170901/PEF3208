@@ -6,6 +6,8 @@
 
 #define PI 3.14159265
 
+using namespace std;
+
 Trelica::Trelica(){
     qNos = 0;
     qBarras = 0;
@@ -35,23 +37,50 @@ No* Trelica::getNo(int id){
     return NULL;
 }
 
+No* Trelica::getLastNo(){
+    return nos->at(nos->size() - 1);
+}
+
 bool Trelica::isostatica(){
     if (forcas->size() + barras->size() == 2 * nos->size()) return true;
     else return false;
 }
 
-void Trelica::adicionar(int id, double X, double Y){
+bool Trelica::adicionar(int id, double X, double Y){
+    for (unsigned int i = 0; i < nos->size(); i++){
+        if (X == nos->at(i)->getX() && Y == nos->at(i)->getY()){
+            cout << "Erro: Esse n" << (char) 162 << " j" << (char) 160 << " existe." << endl << endl;
+            return false;
+        }
+    }
     No* novo = new No(id, X, Y);
     nos->push_back(novo);
+    cout << "N" << (char) 162 << " de id " << id << " inserido." << endl << endl;
     qNos++;
+    return true;
 }
 
-void Trelica::conectar(int id, int X, int Y){
+bool Trelica::conectar(int id, int X, int Y){
+    for (unsigned int i = 0; i < barras->size(); i++){
+        int pontaA, pontaB;
+        pontaA = barras->at(i)->getNoA()->getId();
+        pontaB = barras->at(i)->getNoB()->getId();
+        if ((pontaA == X && pontaB == Y) || (pontaA == Y && pontaB == X)){
+            cout << "Erro: Essa barra j" << (char) 160 << " existe." << endl << endl;
+            return false;
+        }
+        if (X == Y){
+            cout << "Erro: Os n" << (char) 160 << "s alvo e destino s" << (char) 198 << "o iguais." << endl << endl;
+            return false;
+        }
+    }
     Barra* nova = new Barra(getNo(X), getNo(Y), id);
     getNo(X)->addBarra(id);
     getNo(Y)->addBarra(id);
     barras->push_back(nova);
+    cout << "Barra de id " << id << " inserida." << endl << endl;
     qBarras++;
+    return true;
 }
 
 void Trelica::addForca(double angulo, double modulo, int no){
@@ -123,7 +152,8 @@ vector<double>* Trelica::calcular(){
     respostas = new double[qNos * 2];
 
     for (unsigned int i = 0; i < 2 * nos->size(); i++){ // 2 equações para cada nó.
-        respostas[i] = 0;
+        respostas[i] = 0; // Inicializando com 0.
+
         for (unsigned int j = 0; j < nos->at(i / 2)->getForcas()->size(); j++){ // Forças de valores conhecidos (lado direito da equação).
             double trigonometrico;
 
@@ -145,9 +175,11 @@ vector<double>* Trelica::calcular(){
         }
     }
     
-    for (unsigned int i = 0; i < 2 * nos->size(); i++){ // Mapeando lado esquerdo da equação agora, para todos os nós
-        for (int j = 0; j < qBarras; j++) sistema[i][j] = 0; // Pra não ter undefineds! (quase surtei ontem)
-        for (unsigned int j = 0; j < nos->at(i/2)->getBarras()->size(); j++){ // <- Adicionar a informação das barras dentro do objeto Nó.
+    for (unsigned int i = 0; i < 2 * nos->size(); i++){ // Mapeamento do lado esquerdo das equações
+
+        for (int j = 0; j < qBarras; j++) sistema[i][j] = 0;
+
+        for (unsigned int j = 0; j < nos->at(i/2)->getBarras()->size(); j++){
 
             int barraId = nos->at(i/2)->getBarras()->at(j); // ID de cada barra linkada no nó.
             Barra* reat = barras->at(barraId); // A barra com o ID.
@@ -190,8 +222,8 @@ vector<double>* Trelica::calcular(){
     }
 
     int storage_i = 0, storage_j = 0;
-    double** matriz;
-    double* respMatriz;
+    double** matriz; // Matriz LI do sistema
+    double* respMatriz; // Resposta das equações da matriz LI
     matriz = new double*[qNos];
     for (int i = 0; i < qNos; i++){
         matriz[i] = new double[qNos];

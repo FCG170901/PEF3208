@@ -17,9 +17,10 @@ public:
     Trelica();
     ~Trelica();
     No* getNo(int id);
+    No* getLastNo();
     bool isostatica();
-    void adicionar(int id, double X, double Y); // Adiciona um Nó.
-    void conectar(int id, int X, int Y); // Conecta dois Nós com uma Barra.
+    bool adicionar(int id, double X, double Y); // Adiciona um Nó.
+    bool conectar(int id, int X, int Y); // Conecta dois Nós com uma Barra.
     void addForca(double angulo, double modulo, int no); // Adiciona a força no nó e no vector de verificação de equilíbrio.
     bool verificar(); // Verifica se barra está em equilíbrio para ser processada.
 
