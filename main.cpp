@@ -33,13 +33,6 @@ int main(){
             int op;
             cout << "Modo: ";
             cin >> op;
-
-            while (cin.fail() || op < 0 || op > 5){
-                cin.clear();
-                cin.ignore(1000, '\n');
-                cin >> op;
-            }
-
             switch (op){
                 case 5:
                     cout << "Aviso: Apagar a treli" << (char) 135 << "a far" << (char) 160 << " com que o arquivo de salvamento seja limpo. Se desejar, copie-o antes de prosseguir." << endl;
@@ -77,91 +70,42 @@ int main(){
                     int no;
                     cout << "Insira o " << (char) 131 << "ngulo da for" << (char) 135 << "a: ";
                     cin >> angulo;
-
-                    while (cin.fail()){
-                        cin.clear();
-                        cin.ignore(1000, '\n');
-                        cin >> angulo;
-                    }
-
                     savedata << angulo << " ";
                     cout << "Insira o m" << (char) 162 << "dulo da for" << (char) 135 << "a: ";
                     cin >> modulo;
-
-                    while (cin.fail()){
-                        cin.clear();
-                        cin.ignore(1000, '\n');
-                        cin >> modulo;
-                    }
-
                     savedata << modulo << " ";
                     cout << "Insira o id do n" << (char) 162 << " onde a for" << (char) 135 << "a ser" << (char) 160 << " inserida: ";
                     cin >> no;
-
-                    while (cin.fail() || no < 0 || no > T->getLastNo()->getId()){
-                        cin.clear();
-                        cin.ignore(1000, '\n');
-                        cin >> no;
-                    }      
-
                     savedata << no << " ";
                     angulo = angulo * (PI / 180);
                     T->addForca(angulo, modulo, no);
                     cout << "For" << (char) 135 << "a inserida no n" << (char) 162 << " " << no << "." << endl << endl;
                     continue;
                 case 2:
+                    savedata << op << " ";
                     int A, B;
                     cout << "Insira o id do n" << (char) 162 << " de origem: ";
                     cin >> A;
-
-                    while (cin.fail() || A < 0 || A > T->getLastNo()->getId()){
-                        cin.clear();
-                        cin.ignore(1000, '\n');
-                        cin >> A;
-                    }  
-
+                    savedata << A << " ";
                     cout << "Insira o id do n" << (char) 162 << " de destino: ";
                     cin >> B;
-
-                    while (cin.fail() || B < 0 || B > T->getLastNo()->getId()){
-                        cin.clear();
-                        cin.ignore(1000, '\n');
-                        cin >> B;
-                    }  
-
-                    if (T->conectar(idConex, A, B)){
-                        idConex++;
-                        savedata << op << " ";
-                        savedata << A << " ";
-                        savedata << B << " ";
-                    }
+                    savedata << B << " ";
+                    T->conectar(idConex, A, B);
+                    cout << "Barra de id " << idConex << " inserida." << endl << endl;
+                    idConex++; 
                     continue;
                 case 1:
+                    savedata << op << " ";
                     double X, Y;
                     cout << "Valor da posi" << (char) 135 << (char) 198 << "o X do n" << (char) 162 << ": ";
                     cin >> X;
-
-                    while (cin.fail()){
-                        cin.clear();
-                        cin.ignore(1000, '\n');
-                        cin >> X;
-                    }  
-
+                    savedata << X << " ";
                     cout << "Valor da posi" << (char) 135 << (char) 198 << "o Y do n" << (char) 162 << ": ";
                     cin >> Y;
-
-                    while (cin.fail()){
-                        cin.clear();
-                        cin.ignore(1000, '\n');
-                        cin >> X;
-                    }
-
-                    if (T->adicionar(idNo, X, Y)){
-                        idNo++;
-                        savedata << op << " ";
-                        savedata << X << " ";
-                        savedata << Y << " ";
-                    }
+                    savedata << Y << " ";
+                    T->adicionar(idNo, X, Y);
+                    cout << "N" << (char) 162 << " de id " << idNo << " inserido." << endl << endl;
+                    idNo++;
                     continue;
                 case 0:
                     rodando = false;
