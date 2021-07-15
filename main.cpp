@@ -21,7 +21,13 @@ int main(){
         savedata.open("Ultima Trelica.txt");
         savedata << "[Dados salvos da ultima trelica criada]" << endl << endl;
         savedata << "Codigo da trelica (copiar e colar ela no programa para recriar): ";
-        cout << "[Grupo NUMERO - PEF3208 - 2021] calculadora de treli" << (char) 135 << "as em C++" << endl;
+        cout << "[PEF3208 - 2021] calculadora de treli" << (char) 135 << "as em C++" << endl << endl;
+        cout << "-= Integrantes do grupo =-" << endl;
+        cout << "Felipe Cesar Cuellar da Silva" << endl;
+        cout << "Mariluce Pereira de Jesus" << endl;
+        cout << "Maria Monique de Menezes Cavalcanti" << endl;
+        cout << "Nelson Eug" << (char) 136 << "nio da Silveira Neto" << endl;
+        cout << "Rodolfo Henrique Rom" << (char) 198 << "o da Silva" << endl << endl;
         cout << "Nota: Os c" << (char) 160 << "lculos ser" << (char) 198 << "o salvos no arquivo 'Ultima Trelica.txt', na mesma pasta deste execut" << (char) 160 << "vel." << endl << endl;
         cout << "1) Inserir novo n" << (char) 162 << endl;
         cout << "2) Conectar n" << (char) 162 << "s com uma barra" << endl;
