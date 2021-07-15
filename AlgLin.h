@@ -7,10 +7,10 @@
 #include <iostream>
 using namespace std;
 
-double determinante(double** matriz, int dim);
-vector<double>* cramer(double** incognitas, double* resultados, int num);
-double** LinearmenteIndependente(double** equacoes, int quantEquacoes, int quantIncognita, int* control_i, int* control_j);
-double* findRespostas(double* respostas, int qNos, int* control_i, int* control_j);
+double determinante(double** matriz, int dim); // Calcula o determinante de uma matriz
+vector<double>* cramer(double** incognitas, double* resultados, int num); // Aplica a regra de cramer
+double** LinearmenteIndependente(double** equacoes, int quantEquacoes, int quantIncognita, int* control_i, int* control_j); // Extrai uma matriz LI do conjunto de dados
+double* findRespostas(double* respostas, int qNos, int* control_i, int* control_j); // Extrai as respostas para a matriz LI
 
 double determinante(double** matriz, int dim){
     double det = 0;
@@ -48,17 +48,17 @@ double determinante(double** matriz, int dim){
 }
 
 vector<double>* cramer(double** incognitas, double* resultados, int num){
-    double mainDet = determinante(incognitas, num); // Calcular det da matriz inicial
+    double mainDet = determinante(incognitas, num);
     vector<double>* respostas = new vector<double>;
     if (mainDet != 0){
         for (int c = 0; c < num; c++){
 
-            double** matrIncognita = new double*[num]; // Declarar nova matriz
+            double** matrIncognita = new double*[num];
             for (int i = 0; i < num; i++){
                 matrIncognita[i] = new double[num];
             }
 
-            for (int i = 0; i < num; i++){ // Copiar de matriz inicial menos pela coluna da variavel
+            for (int i = 0; i < num; i++){
                 for (int j = 0; j < num; j++){
                     if (j != c){
                         matrIncognita[i][j] = incognitas[i][j];
@@ -69,7 +69,7 @@ vector<double>* cramer(double** incognitas, double* resultados, int num){
                 }
             }
 
-            double detIncognita = determinante(matrIncognita, num); // Calcular det e resposta, salvar no vector
+            double detIncognita = determinante(matrIncognita, num);
             double valor = detIncognita / mainDet;
             respostas->push_back(valor);
         }
@@ -98,15 +98,14 @@ double** LinearmenteIndependente(double** equacoes, int quantEquacoes, int quant
     for (int i = 0; i < quantIncognita; i++){
         LI[i] = equacoes[seletor[i]];
     }
-    if (determinante(LI, quantIncognita) == 0){ // Depois ver se algum caso pode crashar isso
+    if (determinante(LI, quantIncognita) == 0){
         (*control_j)++;
         if (*control_j == quantIncognita){
             (*control_j) = 0;
             (*control_i)++;
         }
-        // Controles ok, mas não identificam essa excessão...
         if (*control_i >= quantIncognita){
-            throw new logic_error("Matriz quadrada LI Inexistente"); // Desnecessário?
+            throw new logic_error("Matriz quadrada LI Inexistente");
         }
         return LinearmenteIndependente(equacoes, quantEquacoes, quantIncognita, control_i, control_j);
     }

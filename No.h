@@ -1,6 +1,7 @@
 #ifndef NO_H
 #define NO_H
 
+
 #include "Forca.h"
 #include "Barra.h"
 #include <vector>
@@ -16,8 +17,8 @@ private:
     vector<Forca*>* forcas;
     vector<int>* barras;
 public:
-    No(int id, double posX, double posY);
-    ~No();
+    No(int id, double posX, double posY); // Construtor do No
+    ~No(); // Destrutor do No
     void addForca(double angulo, double modulo);
     void addBarra(int id);
     double getX();
@@ -26,5 +27,6 @@ public:
     vector<Forca*>* getForcas();
     vector<int>* getBarras();
 };
+
 
 #endif // NO_H

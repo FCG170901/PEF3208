@@ -1,6 +1,7 @@
 #ifndef TRELICA_H
 #define TRELICA_H
 
+
 #include <vector>
 #include "No.h"
 #include "Barra.h"
@@ -14,8 +15,8 @@ private:
     vector<Barra*>* barras;
     vector<vector<double>*>* forcas;
 public:
-    Trelica();
-    ~Trelica();
+    Trelica(); // Construtor da Trelica
+    ~Trelica(); // Destrutor da Trelica
     No* getNo(int id);
     No* getLastNo();
     bool isostatica();
@@ -26,5 +27,6 @@ public:
 
     vector<double>* calcular(); // Calcula todas as forças quando todas as informações já estão carregadas.
 };
+
 
 #endif // TRELICA_H

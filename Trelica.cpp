@@ -3,7 +3,6 @@
 #include <cmath>
 #include <vector>
 #include <iostream>
-
 #define PI 3.14159265
 
 using namespace std;

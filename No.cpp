@@ -24,7 +24,7 @@ No::~No(){
 }
 
 void No::addForca(double angulo, double modulo){
-    Forca* nova = new Forca('n', modulo, angulo, id, fid);
+    Forca* nova = new Forca(modulo, angulo, id, fid);
     forcas->push_back(nova);
     fid++;
 }

@@ -38,11 +38,3 @@ double Barra::getAngulo(){
 int Barra::getId(){
     return this->id;
 }
-
-void Barra::setModulo(double modulo){
-    this->modulo = modulo;
-}
-
-void Barra::imprimir(){
-    cout << "Esfor" << (char) 135 << "o F (" << id << ") = " << modulo << endl;
-}
